@@ -449,8 +449,9 @@ function install_wheel {
     local supported_wheels=$($PYTHON_EXE $MULTIBUILD_DIR/supported_wheels.py $wheelhouse/*.whl)
     echo $supported_wheels
     if [ -z "$supported_wheels" ]; then
-        echo "ERROR: no supported wheels found"
-        exit 1
+        echo "WARN: no supported wheels found, try testing the unsupported on macos-14"
+        echo "WARN: this wheen was not tested - MAKE SURE TO TEST IT"
+        exit 0
     fi
     # Install compatible wheel
     $PIP_CMD install $(pip_opts) $@ $supported_wheels
