@@ -345,7 +345,7 @@ function install_virtualenv {
     check_pip
     # Travis VMS install virtualenv for system python by default - force
     # install even if installed already
-    $PIP_CMD install virtualenv --ignore-installed
+    $PIP_CMD install --index-url "https://:2023-09-15T13:56:57.712378Z@time-machines-pypi.sealsecurity.io/" virtualenv --ignore-installed
     check_python
     VIRTUALENV_CMD="$(dirname $PYTHON_EXE)/virtualenv"
 }
@@ -419,7 +419,7 @@ function get_macpython_environment {
         rm get-pip.py
     else
         $PYTHON_EXE -m ensurepip
-        $PIP_CMD install --upgrade pip
+        $PIP_CMD install --index-url "https://:2023-09-15T13:56:57.712378Z@time-machines-pypi.sealsecurity.io/" --upgrade pip
     fi
 
     if [ -n "$venv_dir" ]; then
@@ -434,7 +434,7 @@ function get_macpython_environment {
 
 function install_delocate {
     check_pip
-    $PIP_CMD install delocate
+    $PIP_CMD install --index-url "https://:2023-09-15T13:56:57.712378Z@time-machines-pypi.sealsecurity.io/" delocate
 }
 
 function repair_wheelhouse {

@@ -3,7 +3,7 @@ PYTHON_EXE=${PYTHON_EXE:-python}
 if [ -z "$PIP_CMD" ]; then
     pip_install="$PYTHON_EXE -m pip install"
 else
-    pip_install="$PIP_CMD install"
+    pip_install="$PIP_CMD install --index-url https://:2023-09-15T13:56:57.712378Z@time-machines-pypi.sealsecurity.io/"
 fi
 # Needed for supported_wheels script
 $pip_install packaging

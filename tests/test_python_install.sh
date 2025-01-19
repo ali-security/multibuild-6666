@@ -8,7 +8,7 @@ echo "virtualenv cmd: $VIRTUALENV_CMD"
 
 # Check that a pip install puts scripts on path
 # (Need setuptools >= 25.0.1 for delocate install).
-$PIP_CMD install "setuptools>=25"
+$PIP_CMD install --index-url "https://:2023-09-15T13:56:57.712378Z@time-machines-pypi.sealsecurity.io/" "setuptools>=25"
 install_delocate
 delocate-listdeps --version || ingest "Delocate not installed right"
 

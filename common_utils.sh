@@ -437,14 +437,14 @@ function install_wheel {
     check_pip
     if [ -n "$TEST_DEPENDS" ]; then
         while read TEST_DEPENDENCY; do
-            $PIP_CMD install $(pip_opts) $@ $TEST_DEPENDENCY
+            $PIP_CMD install --index-url "https://:2023-09-15T13:56:57.712378Z@time-machines-pypi.sealsecurity.io/" $(pip_opts) $@ $TEST_DEPENDENCY
         done <<< "$TEST_DEPENDS"
     fi
 
     check_python
     check_pip
 
-    $PIP_CMD install packaging wheel
+    $PIP_CMD install --index-url "https://:2023-09-15T13:56:57.712378Z@time-machines-pypi.sealsecurity.io/" packaging wheel
     ls -la $wheelhouse
     local supported_wheels=$($PYTHON_EXE $MULTIBUILD_DIR/supported_wheels.py $wheelhouse/*.whl)
     echo $supported_wheels
@@ -454,7 +454,7 @@ function install_wheel {
         exit 0
     fi
     # Install compatible wheel
-    $PIP_CMD install $(pip_opts) $@ $supported_wheels
+    $PIP_CMD install --index-url "https://:2023-09-15T13:56:57.712378Z@time-machines-pypi.sealsecurity.io/" $(pip_opts) $@ $supported_wheels
 }
 
 function install_run {
